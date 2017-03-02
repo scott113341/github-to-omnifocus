@@ -33,7 +33,7 @@ class GitHub {
         open: issue.state === 'open',
 
         milestone: issue.milestone ? issue.milestone.title : null,
-        due: issue.milestone && issue.milestone.due_on > 0 ? new Date(issue.milestone.due_on) : null,
+        due: issue.milestone && new Date(issue.milestone.due_on) > 0 ? new Date(issue.milestone.due_on) : null,
         closed: issue.state === 'closed' ? new Date(issue.closed_at) : null
       }
     }
