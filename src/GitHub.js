@@ -18,24 +18,24 @@ class GitHub {
 
     while (this.gh.hasNextPage(res)) {
       res = await this.gh.getNextPage(res);
-      issues.push(...res.data.map(transform));
+      issues.push(...res.data.map(GitHub.formatIssue));
     }
 
     return issues;
+  }
 
-    function transform (issue) {
-      return {
-        repo: issue.repository.full_name,
-        number: issue.number,
-        url: issue.url,
-        name: issue.title,
-        description: issue.body,
-        open: issue.state === 'open',
+  static formatIssue (issue) {
+    return {
+      repo: issue.repository.full_name,
+      number: issue.number,
+      url: issue.url,
+      name: issue.title,
+      description: issue.body,
+      open: issue.state === 'open',
 
-        milestone: issue.milestone ? issue.milestone.title : null,
-        due: issue.milestone && new Date(issue.milestone.due_on) > 0 ? new Date(issue.milestone.due_on) : null,
-        closed: issue.state === 'closed' ? new Date(issue.closed_at) : null
-      }
+      milestone: issue.milestone ? issue.milestone.title : null,
+      due: issue.milestone && new Date(issue.milestone.due_on) > 0 ? new Date(issue.milestone.due_on) : null,
+      closed: issue.state === 'closed' ? new Date(issue.closed_at) : null
     }
   }
 

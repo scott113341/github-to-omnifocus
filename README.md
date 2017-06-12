@@ -8,11 +8,11 @@
 
 Sync GitHub issues to OmniFocus
 
-`npm install github-to-omnifocus`
+`npm install github-to-omnifocus -g`
 
 
-[npm-version-badge]: https://img.shields.io/npm/v/github-to-omnifocus.svg?style=flat-square
-[npm-version-href]: https://www.npmjs.com/package/github-to-omnifocus
+[npm-version-badge]: https://img.shields.io/npm/v/@scott113341/github-to-omnifocus.svg?style=flat-square
+[npm-version-href]: https://www.npmjs.com/package/@scott113341/github-to-omnifocus
 
 [build-status-badge]: https://img.shields.io/travis/scott113341/github-to-omnifocus/master.svg?style=flat-square
 [build-status-href]: https://travis-ci.org/scott113341/github-to-omnifocus/branches
