@@ -1,7 +1,8 @@
 const fs = require('fs');
 const objectHash = require('object-hash');
+const path = require('path');
 
-const cachePath = __dirname + '/.cache.json';
+const cachePath = path.join(__dirname, '.cache.json');
 const cache = loadCache();
 
 function loadCache () {

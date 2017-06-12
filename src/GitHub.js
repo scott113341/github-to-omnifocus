@@ -1,7 +1,6 @@
 const GitHubApi = require('github');
 
 class GitHub {
-
   constructor (githubToken) {
     this.gh = new GitHubApi({ debug: false });
     this.gh.authenticate({
@@ -14,7 +13,7 @@ class GitHub {
     const issues = [];
 
     let res = await this.gh.issues.getAll({ filter: 'assigned', state: 'all', per_page: 100 });
-    issues.push(...res.data.map(transform));
+    issues.push(...res.data.map(GitHub.formatIssue));
 
     while (this.gh.hasNextPage(res)) {
       res = await this.gh.getNextPage(res);
@@ -36,9 +35,8 @@ class GitHub {
       milestone: issue.milestone ? issue.milestone.title : null,
       due: issue.milestone && new Date(issue.milestone.due_on) > 0 ? new Date(issue.milestone.due_on) : null,
       closed: issue.state === 'closed' ? new Date(issue.closed_at) : null
-    }
+    };
   }
-
 }
 
 module.exports = GitHub;
